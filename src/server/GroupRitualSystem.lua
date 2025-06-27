@@ -472,5 +472,3 @@ end
 
 -- 🔄 **MODULE EXPORT**
 return GroupRitualSystem 
-
-return GroupRitualSystem 
