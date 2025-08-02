@@ -151,6 +151,35 @@ The settings system provides user control over various game aspects.
    - Color options
    - Input preferences
 
+## Resonance Warfare System
+
+### Overview
+Allows players to engage in battles driven by emotional resonance.
+
+### Components
+- **ResonanceWarfareSystem Module**
+- Battle initiation events
+- Winner calculation based on emotions
+
+## Garden Expansion System
+
+### Overview
+Expands the playable garden with new plots and special features.
+
+### Components
+- **GardenExpansionSystem Module**
+- Expansion history tracking
+- Visual updates through `GardenScene`
+
+## Grand Theft Lux Integration System
+
+### Overview
+Bridges lux heist mechanics with Grand Theft Lux.
+
+### Components
+- **GrandTheftLuxIntegration Module**
+- Remote events `StartLuxHeist` and `CompleteLuxHeist`
+
 ## Technical Implementation
 
 ### Service Structure
