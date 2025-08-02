@@ -20,6 +20,9 @@ local GardenScene = require(script.Parent.GardenScene)
 local PlantMutationSystem = require(script.Parent.PlantMutationSystem)
 local CrossPollinationSystem = require(script.Parent.CrossPollinationSystem)
 local PlantDiseaseSystem = require(script.Parent.PlantDiseaseSystem)
+local ResonanceWarfareSystem = require(script.Parent.ResonanceWarfareSystem)
+local GardenExpansionSystem = require(script.Parent.GardenExpansionSystem)
+local GrandTheftLuxIntegration = require(script.Parent.GrandTheftLuxIntegration)
 
 -- Create Events folder
 local Events = Instance.new("Folder")
@@ -41,7 +44,11 @@ local remoteEvents = {
     CreatePlant = createRemoteEvent("CreatePlant"),
     GrowPlant = createRemoteEvent("GrowPlant"),
     AttemptPollination = createRemoteEvent("AttemptPollination"),
-    TreatDisease = createRemoteEvent("TreatDisease")
+    TreatDisease = createRemoteEvent("TreatDisease"),
+    StartBattle = createRemoteEvent("StartBattle"),
+    ExpandGarden = createRemoteEvent("ExpandGarden"),
+    StartLuxHeist = createRemoteEvent("StartLuxHeist"),
+    CompleteLuxHeist = createRemoteEvent("CompleteLuxHeist")
 }
 
 -- Initialize systems
@@ -53,6 +60,9 @@ local function initSystems()
     PlantMutationSystem.init()
     CrossPollinationSystem.init()
     PlantDiseaseSystem.init()
+    ResonanceWarfareSystem.init()
+    GardenExpansionSystem.init()
+    GrandTheftLuxIntegration.init()
 end
 
 -- Player data management
@@ -68,6 +78,10 @@ local function initPlayerData(player)
         },
         rituals = {},
         plants = {},
+        resonanceStats = { attack = 1, defense = 1 },
+        expansions = {},
+        luxBalance = 0,
+        heists = {},
         lastUpdate = os.time()
     }
 end
@@ -148,16 +162,65 @@ end)
 remoteEvents.TreatDisease.OnServerEvent:Connect(function(player, plantId, treatment)
     local data = playerData[player.UserId]
     if not data or not data.plants[plantId] then return end
-    
+
     PlantDiseaseSystem.treatDisease(plantId, treatment)
+end)
+
+remoteEvents.StartBattle.OnServerEvent:Connect(function(player, targetId)
+    local target = game.Players:GetPlayerByUserId(targetId)
+    if not target then return end
+
+    local p1 = playerData[player.UserId]
+    local p2 = playerData[target.UserId]
+    if not p1 or not p2 then return end
+
+    ResonanceWarfareSystem.registerPlayer(player.UserId, p1.resonanceStats)
+    ResonanceWarfareSystem.registerPlayer(target.UserId, p2.resonanceStats)
+
+    ResonanceWarfareSystem.startBattle(
+        {id = player.UserId, emotions = p1.emotions},
+        {id = target.UserId, emotions = p2.emotions}
+    )
+end)
+
+remoteEvents.ExpandGarden.OnServerEvent:Connect(function(player, expansionType)
+    local data = playerData[player.UserId]
+    if not data then return end
+
+    GardenExpansionSystem.applyExpansion(player.UserId, expansionType)
+    table.insert(data.expansions, expansionType)
+end)
+
+remoteEvents.StartLuxHeist.OnServerEvent:Connect(function(player, targetLux)
+    local data = playerData[player.UserId]
+    if not data then return end
+
+    GrandTheftLuxIntegration.registerPlayer(player.UserId, data.luxBalance)
+    local heist = GrandTheftLuxIntegration.startHeist(player.UserId, targetLux)
+    if heist then
+        data.heists[heist.id] = heist
+    end
+end)
+
+remoteEvents.CompleteLuxHeist.OnServerEvent:Connect(function(player, heistId, success)
+    local data = playerData[player.UserId]
+    if not data then return end
+
+    local result = GrandTheftLuxIntegration.completeHeist(heistId, success)
+    if result then
+        data.luxBalance = GrandTheftLuxIntegration.getLuxBalance(player.UserId)
+        data.heists[heistId] = nil
+    end
 end)
 
 -- Player events
 game.Players.PlayerAdded:Connect(function(player)
     initPlayerData(player)
+    GrandTheftLuxIntegration.registerPlayer(player.UserId, 0)
 end)
 
 game.Players.PlayerRemoving:Connect(function(player)
+    GrandTheftLuxIntegration.unregisterPlayer(player.UserId)
     playerData[player.UserId] = nil
 end)
 
@@ -168,3 +231,4 @@ local function init()
 end
 
 init() 
+

@@ -9,6 +9,9 @@ A sensory-emotive simulation game where players cultivate a garden reflecting th
 - **Ritual System**: Engage in meaningful rituals to nurture your garden and emotional well-being
 - **Sound Design**: Immersive audio system with dynamic music and ambient soundscapes
 - **Accessibility**: Comprehensive settings for sound, graphics, and accessibility options
+- **Resonance Warfare**: Battle other players using emotional resonance energy
+- **Garden Expansion**: Unlock new areas and features for your personal garden
+- **Grand Theft Lux Integration**: Coordinate inter-universe lux heists
 
 ## 🚀 Getting Started
 
@@ -77,6 +80,18 @@ src/
 - Graphics quality settings
 - Accessibility options
 - User preferences
+
+### Resonance Warfare System
+- Engage in resonance-based battles
+- Track victories and defeats
+
+### Garden Expansion System
+- Unlock new plots and special features
+- Visual cues for expanded biomes
+
+### Grand Theft Lux Integration
+- Initiate and resolve lux heists
+- Sync lux balances with external systems
 
 ## 🛠️ Development
 
