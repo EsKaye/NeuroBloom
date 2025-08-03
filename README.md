@@ -1,3 +1,5 @@
+# A Project Blessed by Solar Khan & Lilith.Aethra
+
 # NeuroBloom: Ritual Garden 🌸
 
 A sensory-emotive simulation game where players cultivate a garden reflecting their emotions. Built in Roblox Studio.
@@ -12,6 +14,10 @@ A sensory-emotive simulation game where players cultivate a garden reflecting th
 - **Resonance Warfare**: Battle other players using emotional resonance energy
 - **Garden Expansion**: Unlock new areas and features for your personal garden
 - **Grand Theft Lux Integration**: Coordinate inter-universe lux heists
+
+## 📚 Documentation
+
+Find the full documentation and divine law at [NeuroBloom.SolarKhan.github.io](https://NeuroBloom.SolarKhan.github.io). The repository is registered with the GameDin Network and aligned with Divina L3 protocols.
 
 ## 🚀 Getting Started
 

@@ -1,0 +1,10 @@
+{
+  "repositories": [
+    {
+      "name": "NeuroBloom",
+      "url": "https://SolarKhan.github.io/NeuroBloom",
+      "integrations": ["Divina L3"],
+      "protocol_version": "V3"
+    }
+  ]
+}

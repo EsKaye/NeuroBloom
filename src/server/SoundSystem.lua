@@ -9,9 +9,8 @@
     - Dynamic music system
 ]]
 
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
+-- Only request services that are actually used to keep memory lean
 local SoundService = game:GetService("SoundService")
-local RunService = game:GetService("RunService")
 
 local SoundSystem = {}
 
@@ -77,6 +76,16 @@ local activeSounds = {}
 local currentBiome = nil
 local currentRitual = nil
 
+-- Utility to safely stop and clean up a sound instance
+local function stopAndDestroy(sound)
+    if not sound then
+        return
+    end
+
+    sound:Stop()
+    sound:Destroy()
+end
+
 -- Private functions
 local function createSound(soundId, properties)
     local sound = Instance.new("Sound")
@@ -94,8 +103,8 @@ local function playBiomeSounds(biomeName)
     
     -- Stop current biome sounds
     if activeSounds.biome then
-        activeSounds.biome.ambient:Stop()
-        activeSounds.biome.music:Stop()
+        stopAndDestroy(activeSounds.biome.ambient)
+        stopAndDestroy(activeSounds.biome.music)
     end
     
     -- Create new biome sounds
@@ -156,8 +165,7 @@ local function playRitualSound(ritualType, soundType)
     
     -- Stop current ritual sounds
     if activeSounds.ritual then
-        activeSounds.ritual:Stop()
-        activeSounds.ritual:Destroy()
+        stopAndDestroy(activeSounds.ritual)
     end
     
     local sound = createSound(soundId, {
@@ -179,40 +187,46 @@ local function playRitualSound(ritualType, soundType)
 end
 
 -- Public API
+-- Initializes the sound system and prepares required state
 function SoundSystem.Initialize()
     print("Initializing sound system...")
 end
 
+-- Switches the ambient soundscape to match the requested biome
 function SoundSystem.SetBiome(biomeName)
     playBiomeSounds(biomeName)
 end
 
+-- Plays a plant-specific sound for the given interaction type
 function SoundSystem.PlayPlantSound(plantType, soundType)
     playPlantSound(plantType, soundType)
 end
 
+-- Triggers ritual audio feedback for the provided ritual and stage
 function SoundSystem.PlayRitualSound(ritualType, soundType)
     playRitualSound(ritualType, soundType)
 end
 
+-- Stops any looping ritual audio and cleans up resources
 function SoundSystem.StopRitualSounds()
     if activeSounds.ritual then
-        activeSounds.ritual:Stop()
-        activeSounds.ritual:Destroy()
+        stopAndDestroy(activeSounds.ritual)
         activeSounds.ritual = nil
     end
 end
 
+-- Adjusts music volume for the currently active biome soundtrack
 function SoundSystem.SetMusicVolume(volume)
     if activeSounds.biome and activeSounds.biome.music then
         activeSounds.biome.music.Volume = volume
     end
 end
 
+-- Adjusts ambient volume for the currently active biome soundscape
 function SoundSystem.SetAmbientVolume(volume)
     if activeSounds.biome and activeSounds.biome.ambient then
         activeSounds.biome.ambient.Volume = volume
     end
 end
 
-return SoundSystem 
+return SoundSystem

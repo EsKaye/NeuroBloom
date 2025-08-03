@@ -1,0 +1,7 @@
+site_name: NeuroBloom
+site_url: https://NeuroBloom.SolarKhan.github.io
+theme:
+  name: readthedocs
+nav:
+  - Home: index.md
+  - Divine Law: https://github.com/SolarKhan/NeuroBloom/blob/main/COVENANT.md

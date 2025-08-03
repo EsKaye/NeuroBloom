@@ -34,6 +34,7 @@ temp/
 
 # Build output
 build/
+site/
 dist/
 out/
 
