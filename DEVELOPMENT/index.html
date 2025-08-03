@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://NeuroBloom.SolarKhan.github.io/DEVELOPMENT/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Development Guide - NeuroBloom</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Development Guide";
+        var mkdocs_page_input_path = "DEVELOPMENT.md";
+        var mkdocs_page_url = "/DEVELOPMENT/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NeuroBloom
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://github.com/SolarKhan/NeuroBloom/blob/main/COVENANT.md">Divine Law</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NeuroBloom</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Development Guide</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="development-guide">Development Guide</h1>
+<p>This guide provides information for developers contributing to NeuroBloom.</p>
+<h2 id="development-environment">Development Environment</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Roblox Studio (Latest Version)</li>
+<li>Git</li>
+<li>Basic understanding of Lua</li>
+<li>Familiarity with Roblox development</li>
+</ul>
+<h3 id="setup">Setup</h3>
+<ol>
+<li>Clone the repository</li>
+<li>Open Roblox Studio</li>
+<li>Create a new place</li>
+<li>Import the project files</li>
+<li>Configure Studio settings</li>
+</ol>
+<h2 id="code-style">Code Style</h2>
+<h3 id="lua-style-guide">Lua Style Guide</h3>
+<ul>
+<li>Use PascalCase for module names</li>
+<li>Use camelCase for variables and functions</li>
+<li>Use UPPER_CASE for constants</li>
+<li>Indent with 4 spaces</li>
+<li>Maximum line length: 100 characters</li>
+</ul>
+<h3 id="example">Example</h3>
+<pre><code class="language-lua">local MyModule = {}
+
+local CONSTANT_VALUE = 100
+
+local function privateFunction()
+    -- Implementation
+end
+
+function MyModule.PublicFunction()
+    -- Implementation
+end
+
+return MyModule
+</code></pre>
+<h2 id="module-development">Module Development</h2>
+<h3 id="creating-new-modules">Creating New Modules</h3>
+<ol>
+<li>Create file in appropriate directory</li>
+<li>Follow module template</li>
+<li>Add documentation</li>
+<li>Update dependencies</li>
+</ol>
+<h3 id="module-template">Module Template</h3>
+<pre><code class="language-lua">--[[
+    ModuleName.lua
+    Brief description of the module
+
+    Features:
+    - Feature 1
+    - Feature 2
+]]
+
+local ModuleName = {}
+
+-- Constants
+local CONSTANTS = {
+    -- Constants here
+}
+
+-- Private variables
+local privateVar = nil
+
+-- Private functions
+local function privateFunction()
+    -- Implementation
+end
+
+-- Public API
+function ModuleName.Initialize()
+    -- Implementation
+end
+
+return ModuleName
+</code></pre>
+<h2 id="testing">Testing</h2>
+<h3 id="unit-testing">Unit Testing</h3>
+<ul>
+<li>Test each module independently</li>
+<li>Verify all public functions</li>
+<li>Check error handling</li>
+<li>Test edge cases</li>
+</ul>
+<h3 id="integration-testing">Integration Testing</h3>
+<ul>
+<li>Test module interactions</li>
+<li>Verify event handling</li>
+<li>Check performance</li>
+<li>Test user interactions</li>
+</ul>
+<h2 id="debugging">Debugging</h2>
+<h3 id="common-issues">Common Issues</h3>
+<ol>
+<li>Script Execution Order</li>
+<li>Check service dependencies</li>
+<li>Verify initialization order</li>
+<li>
+<p>Use WaitForChild when needed</p>
+</li>
+<li>
+<p>Performance Issues</p>
+</li>
+<li>Monitor memory usage</li>
+<li>Check for memory leaks</li>
+<li>Optimize loops</li>
+<li>
+<p>Reduce instance creation</p>
+</li>
+<li>
+<p>Network Issues</p>
+</li>
+<li>Verify remote events</li>
+<li>Check data serialization</li>
+<li>Monitor bandwidth usage</li>
+<li>Handle disconnections</li>
+</ol>
+<h3 id="debug-tools">Debug Tools</h3>
+<ul>
+<li>Output window</li>
+<li>Developer console</li>
+<li>Performance monitor</li>
+<li>Network monitor</li>
+</ul>
+<h2 id="version-control">Version Control</h2>
+<h3 id="git-workflow">Git Workflow</h3>
+<ol>
+<li>Create feature branch</li>
+<li>Make changes</li>
+<li>Test thoroughly</li>
+<li>Create pull request</li>
+<li>Code review</li>
+<li>Merge to main</li>
+</ol>
+<h3 id="commit-messages">Commit Messages</h3>
+<ul>
+<li>Use present tense</li>
+<li>Start with verb</li>
+<li>Keep it concise</li>
+<li>Reference issues</li>
+</ul>
+<p>Example:</p>
+<pre><code>feat: Add new plant type
+fix: Resolve sound system memory leak
+docs: Update module documentation
+</code></pre>
+<h2 id="documentation">Documentation</h2>
+<h3 id="code-documentation">Code Documentation</h3>
+<ul>
+<li>Document all public functions</li>
+<li>Explain complex logic</li>
+<li>Include usage examples</li>
+<li>Update when changing code</li>
+</ul>
+<h3 id="example_1">Example</h3>
+<pre><code class="language-lua">--[[
+    Creates a new plant instance
+
+    Parameters:
+    - plantType: string - Type of plant to create
+    - position: Vector3 - Position in the garden
+
+    Returns:
+    - Instance - The created plant
+
+    Example:
+    local plant = PlantSystem.CreatePlant(&quot;JOY&quot;, Vector3.new(0, 0, 0))
+]]
+function PlantSystem.CreatePlant(plantType, position)
+    -- Implementation
+end
+</code></pre>
+<h2 id="performance-guidelines">Performance Guidelines</h2>
+<h3 id="optimization">Optimization</h3>
+<ol>
+<li>Instance Management</li>
+<li>Reuse instances when possible</li>
+<li>Clean up unused instances</li>
+<li>Use instance pooling</li>
+<li>
+<p>Monitor instance count</p>
+</li>
+<li>
+<p>Event Handling</p>
+</li>
+<li>Disconnect events when done</li>
+<li>Use weak references</li>
+<li>Avoid nested connections</li>
+<li>
+<p>Monitor event count</p>
+</li>
+<li>
+<p>Memory Management</p>
+</li>
+<li>Clear references</li>
+<li>Use weak tables</li>
+<li>Monitor memory usage</li>
+<li>Clean up resources</li>
+</ol>
+<h2 id="security">Security</h2>
+<h3 id="best-practices">Best Practices</h3>
+<ol>
+<li>Data Validation</li>
+<li>Validate all inputs</li>
+<li>Sanitize user data</li>
+<li>Check permissions</li>
+<li>
+<p>Handle errors</p>
+</li>
+<li>
+<p>Network Security</p>
+</li>
+<li>Use secure remotes</li>
+<li>Validate server calls</li>
+<li>Rate limit requests</li>
+<li>Monitor for abuse</li>
+</ol>
+<h2 id="deployment">Deployment</h2>
+<h3 id="pre-deployment-checklist">Pre-deployment Checklist</h3>
+<ol>
+<li>Code Review</li>
+<li>Check style guide</li>
+<li>Verify documentation</li>
+<li>Test functionality</li>
+<li>
+<p>Review security</p>
+</li>
+<li>
+<p>Testing</p>
+</li>
+<li>Run all tests</li>
+<li>Check performance</li>
+<li>Verify compatibility</li>
+<li>
+<p>Test edge cases</p>
+</li>
+<li>
+<p>Documentation</p>
+</li>
+<li>Update changelog</li>
+<li>Update version</li>
+<li>Update documentation</li>
+<li>Create release notes</li>
+</ol>
+<h3 id="deployment-steps">Deployment Steps</h3>
+<ol>
+<li>Create release branch</li>
+<li>Update version numbers</li>
+<li>Run final tests</li>
+<li>Create release</li>
+<li>Deploy to Roblox</li>
+<li>Monitor for issues</li>
+</ol>
+<h2 id="support">Support</h2>
+<h3 id="getting-help">Getting Help</h3>
+<ol>
+<li>Check documentation</li>
+<li>Search issues</li>
+<li>Ask in discussions</li>
+<li>Contact maintainers</li>
+</ol>
+<h3 id="contributing">Contributing</h3>
+<ol>
+<li>Fork repository</li>
+<li>Create branch</li>
+<li>Make changes</li>
+<li>Submit pull request</li>
+<li>Respond to feedback</li>
+</ol>
+<h2 id="resources">Resources</h2>
+<h3 id="learning">Learning</h3>
+<ul>
+<li><a href="https://developer.roblox.com/">Roblox Developer Hub</a></li>
+<li><a href="https://www.lua.org/manual/5.1/">Lua Documentation</a></li>
+<li><a href="https://developer.roblox.com/en-us/api-reference">Roblox API Reference</a></li>
+</ul>
+<h3 id="tools">Tools</h3>
+<ul>
+<li>Roblox Studio</li>
+<li>Git</li>
+<li>VS Code</li>
+<li>Roblox Plugin Suite</li>
+</ul>
+<hr />
+<p>Remember to keep this guide updated as the project evolves. </p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
