@@ -44,4 +44,12 @@ out/
 
 # Dependencies
 node_modules/
-packages/ 
+packages/
+
+# Unity-generated folders
+Library/
+Temp/
+Obj/
+Build/
+Logs/
+UserSettings/
