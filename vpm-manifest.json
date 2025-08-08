@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "com.vrchat.worlds": "3.4.2",
+    "com.vrchat.udonsharp": "1.1.1"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "neurobloom",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "echo \"No tests yet\""
+  },
+  "dependencies": {
+    "cron": "^2.3.1",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1",
+    "node-fetch": "^3.3.2"
+  }
+}
